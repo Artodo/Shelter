@@ -201,16 +201,20 @@ function debounce(func, wait, immediate) {
     };
 };
 
+const PETS_COUNT_DESKTOP = 16;
+const PETS_COUNT_TABLET = 8;
+const PETS_COUNT_MOBILE = 6;
+
 function getPagesCount(screenWidth) {
-    let p;
+    let count;
     if (screenWidth <= 320) {
-        p = 16;
+      count = PETS_COUNT_DESKTOP;
     } else if (screenWidth > 320 && screenWidth <= 768) {
-        p = 8;
+      count = PETS_COUNT_TABLET;
     } else {
-        p = 6;
+      count = PETS_COUNT_MOBILE;
     }
-    return p;
+    return count;
 }
 
 let screen = window.innerWidth;
@@ -249,7 +253,7 @@ function mixPets(array) {
 
 
 function fillPages() {
-    if (pages === 16) {
+    if (pages === PETS_COUNT_DESKTOP) {
         for (let i = 1; i <= 8; i++) {
             let mixedArr1 = mixPets(petsArr1);
             let mixedArr2 = mixPets(petsArr2);
